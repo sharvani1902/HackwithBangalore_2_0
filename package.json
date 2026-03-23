@@ -1,0 +1,20 @@
+{
+  "name": "propilot",
+  "version": "1.0.0",
+  "description": "Premium AI Project Manager with Real-time Socket Nexus",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "socket_nexus"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:socket\" \"npm run dev:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:socket": "cd socket_nexus && npm run dev",
+    "dev:backend": ".\\.venv\\Scripts\\python.exe -m uvicorn main:app --reload --port 8000",
+    "install:all": "npm install && cd frontend && npm install && cd ../socket_nexus && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
